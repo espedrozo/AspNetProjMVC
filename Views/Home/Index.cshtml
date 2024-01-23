@@ -1,0 +1,20 @@
+﻿@page
+@model AspNetProjMVC.Views.Home.IndexModel
+@using AspNetProjMVC.Controllers
+@{
+}
+<div class="add-customer">
+	<h3>Add New Customer</h3>
+	<form id="customerForm" method="post">
+		<div class="form-group">
+			<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+			<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+			<select class="form-control" id="sex" name="sex" required>
+				<option value="Male">Male</option>
+				<option value="Female">Female</option>
+			</select>
+			<input type="date" class="form-control" id="birthDate" name="birthDate" placeholder="Birth Date" required>
+		</div>
+		<button type="submit" class="btn btn-success" id="btnSubmit" asp-action="AddCustomer">Add Customer</button>
+	</form>
+</div>
