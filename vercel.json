@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "Views/Home/**/*",
+      "use": "@now/dotnet"
+    }
+  ],
+  "routes": [
+    {
+      "handle": "dotnet"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/Views/Home/index.cshtml"
+    }
+  ]
+}
