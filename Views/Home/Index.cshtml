@@ -1,10 +1,21 @@
-﻿@page
-@model AspNetProjMVC.Views.Home.IndexModel
+﻿
 @using AspNetProjMVC.Controllers
 @{
+	ViewData["Title"] = "Sync Databases";
+	string[] TableHeadersMySql = new string[] {"ID"
+						,"First Name"
+						,"Last Name"
+						,"Sex"
+						,"Birth Date"
+						,"Status"
+						,"Inserted At"};
+	CustomersViewModel? Model = ViewData.Model as CustomersViewModel;
+	MySqlController mySqlController = new MySqlController();
+	
 }
+
 <div class="add-customer">
-	<h3>Add Customer</h3>
+	<h3>Add New Customer</h3>
 	<form id="customerForm" method="post">
 		<div class="form-group">
 			<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
@@ -18,3 +29,42 @@
 		<button type="submit" class="btn btn-success" id="btnSubmit" asp-action="AddCustomer">Add Customer</button>
 	</form>
 </div>
+
+
+<div class="table-container">
+	<div class="table">
+		<h3>MySQL Database</h3>
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					@{
+						foreach (var head in TableHeadersMySql)
+						{
+							<th>
+								@head
+							</th>
+						}
+					}
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					if (Model != null)
+					{
+						foreach (var Customer in Model.CustomersMySql)
+						{
+							<tr>
+								<td>@Customer.id</td>
+								<td>@Customer.first_name</td>
+								<td>@Customer.last_name</td>
+								<td>@Customer.sex</td>
+								<td>@Customer.birth_date.ToString("dd/MM/yyyy")</td>
+								<td>@Customer.status</td>
+								<td>@Customer.updated_at.ToString("dd/MM/yyyy")</td>
+							</tr>
+						}
+					}
+				}
+			</tbody>
+		</table>
+	</div>
