@@ -1,5 +1,4 @@
 ﻿using AspNetProjMVC.Models;
-using MySql.Data.MySqlClient;
 
 namespace AspNetProjMVC.Controllers
 {

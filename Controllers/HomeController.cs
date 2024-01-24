@@ -29,16 +29,24 @@ namespace AspNetProjMVC.Controllers
 		public async Task<IActionResult> AddCustomerAsync()
 		{
 			Customer customer = customerController.BuildCustomer(Request.Form);
-
 			await mySqlController.InsertCustomerMySql(customer);
-
-			_logger.LogInformation("Customer added to MySql");
+			_logger.LogInformation("Customer added to Customer's Database");
 
 			return RedirectToAction("Index");
 		}
 
+        public async Task<IActionResult> SyncAsync()
+        {
+            List<Customer> customersMySql = new List<Customer>();           
+            customersMySql = mySqlController.GetCustomers();           
+            await mySqlController.UpdateMySqlCustomers(customersMySql);
+            await mySqlController2.AddOrUpdateCustomerMySql(customersMySql);
+            _logger.LogInformation("Customers synchronized to Clients");
 
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            return RedirectToAction("Index");
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

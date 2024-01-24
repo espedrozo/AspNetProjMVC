@@ -1,70 +1,123 @@
-﻿
-@using AspNetProjMVC.Controllers
+﻿@using AspNetProjMVC.Controllers
 @{
-	ViewData["Title"] = "Sync Databases";
-	string[] TableHeadersMySql = new string[] {"ID"
-						,"First Name"
-						,"Last Name"
-						,"Sex"
-						,"Birth Date"
-						,"Status"
-						,"Inserted At"};
-	CustomersViewModel? Model = ViewData.Model as CustomersViewModel;
-	MySqlController mySqlController = new MySqlController();
-	
+    ViewData["Title"] = "Sync Databases";
+    string[] TableHeadersMySql = new string[] {"ID"
+                        ,"First Name"
+                        ,"Last Name"
+                        ,"Sex"
+                        ,"Birth Date"
+                        ,"Status"
+                        ,"Updated At"};
+    string[] TableHeadersMySql2 = new string[] {"ID"
+                        ,"First Name"
+                        ,"Last Name"
+                        ,"Sex"
+                        ,"Birth Date"
+                        ,"Status"};
+    CustomersViewModel? Model = ViewData.Model as CustomersViewModel;
+    MySqlController mySqlController = new MySqlController();
+    MySqlController2 mySqlController2 = new MySqlController2();
+
+
 }
 
 <div class="add-customer">
-	<h3>Add New Customer</h3>
-	<form id="customerForm" method="post">
-		<div class="form-group">
-			<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
-			<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
-			<select class="form-control" id="sex" name="sex" required>
-				<option value="Male">Male</option>
-				<option value="Female">Female</option>
-			</select>
-			<input type="date" class="form-control" id="birthDate" name="birthDate" placeholder="Birth Date" required>
-		</div>
-		<button type="submit" class="btn btn-success" id="btnSubmit" asp-action="AddCustomer">Add Customer</button>
-	</form>
+    <h3>Add New Customer</h3>
+    <form id="customerForm" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+            <select class="form-control" id="sex" name="sex" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <input type="date" class="form-control" id="birthDate" name="birthDate" placeholder="Birth Date" required>
+        </div>
+        <button type="submit" class="btn btn-success" id="btnSubmit" asp-action="AddCustomer">Add Customer</button>
+    </form>
 </div>
 
 
 <div class="table-container">
-	<div class="table">
-		<h3>MySQL Database</h3>
-		<table class="table table-bordered table-hover">
-			<thead>
-				<tr>
-					@{
-						foreach (var head in TableHeadersMySql)
-						{
-							<th>
-								@head
-							</th>
-						}
-					}
-				</tr>
-			</thead>
-			<tbody>
-				@{
-					if (Model != null)
-					{
-						foreach (var Customer in Model.CustomersMySql)
-						{
-							<tr>
-								<td>@Customer.id</td>
-								<td>@Customer.first_name</td>
-								<td>@Customer.last_name</td>
-								<td>@Customer.sex</td>
-								<td>@Customer.birth_date.ToString("dd/MM/yyyy")</td>
-								<td>@Customer.status</td>
-								<td>@Customer.updated_at.ToString("dd/MM/yyyy")</td>
-							</tr>
-						}
-					}
-				}
-			</tbody>
-		</table>
-	</div>
+    <div class="table">
+        <h3>MySQL Customer Database</h3>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    @{
+                        foreach (var head in TableHeadersMySql)
+                        {
+                            <th>
+                                @head
+                            </th>
+                        }
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var Customer in Model.CustomersMySql)
+                        {
+                            <tr>
+                                <td>@Customer.id</td>
+                                <td>@Customer.first_name</td>
+                                <td>@Customer.last_name</td>
+                                <td>@Customer.sex</td>
+                                <td>@Customer.birth_date.ToString("dd/MM/yyyy")</td>
+                                <td>@Customer.status</td>
+                                <td>@Customer.updated_at.ToString("dd/MM/yyyy")</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="table-container">
+    <div class="table">
+        <h3>MySQL Client Database</h3>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    @{
+                        foreach (var head in TableHeadersMySql2)
+                        {
+                            <th>
+                                @head
+                            </th>
+                        }
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var Customer in Model.CustomersMySql2)
+                        {
+                            <tr>
+                                <td>@Customer.id</td>
+                                <td>@Customer.first_name</td>
+                                <td>@Customer.last_name</td>
+                                <td>@Customer.sex</td>
+                                <td>@Customer.birth_date.ToString("dd/MM/yyyy")</td>
+                                <td>@Customer.status</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <form method="post" class="btn-sync">
+        <button type="submit" class="btn btn-primary" asp-action="Sync">Sync Databases</button>
+    </form>
+</div>
