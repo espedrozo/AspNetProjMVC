@@ -46,6 +46,23 @@ namespace AspNetProjMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> DeleteCustomerAsync(int customerId)
+        {            
+            await mySqlController.DeleteCustomerMySql(customerId);
+            _logger.LogInformation($"Customer with ID {customerId} deleted from Customer's Database");
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> DeleteClientAsync(int customerId)
+        {
+            await mySqlController2.DeleteClientMySql(customerId);
+            _logger.LogInformation($"Client with ID {customerId} deleted from Client's Database");
+
+            return RedirectToAction("Index");
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

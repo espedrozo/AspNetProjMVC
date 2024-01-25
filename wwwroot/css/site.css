@@ -72,3 +72,8 @@ body {
 #container-footer {
     background-color: white;
 }
+
+#action-column {
+    display: flex;
+    justify-content: center;
+}

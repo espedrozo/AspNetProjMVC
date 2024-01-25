@@ -42,10 +42,10 @@ namespace AspNetProjMVC.Controllers
 
 
 
-        public List<Customer> SyncCustomersMySql()
+        public List<Customer> SyncClientsMySql()
         {
             List<Customer> customers = new List<Customer>();
-            using (MySqlConnection con = _databaseController2.GetConnection())
+            using (MySqlConnection con = _databaseController2.GetConnection2())
             {
                 using (MySqlCommand com = new MySqlCommand("SELECT id,first_name,last_name,sex,birth_date,status FROM client WHERE status = 1", con))
                 {
@@ -71,9 +71,9 @@ namespace AspNetProjMVC.Controllers
             return customers;
         }
 
-        public async Task UpdateMySqlCustomers(List<Customer> customers)
+        public async Task UpdateMySqlClients(List<Customer> customers)
         {
-            using (MySqlConnection con = _databaseController2.GetConnection())
+            using (MySqlConnection con = _databaseController2.GetConnection2())
             {
                 await con.OpenAsync();
 
@@ -90,9 +90,9 @@ namespace AspNetProjMVC.Controllers
             }
         }
 
-        public async Task InsertCustomerMySql(Customer customer)
+        public async Task InsertClientMySql(Customer customer)
         {
-            using (MySqlConnection con = _databaseController2.GetConnection())
+            using (MySqlConnection con = _databaseController2.GetConnection2())
             {
                 await con.OpenAsync();
 
@@ -110,6 +110,21 @@ namespace AspNetProjMVC.Controllers
             }
         }
 
+        public async Task DeleteClientMySql(int customerId)
+        {
+            using (MySqlConnection con = _databaseController2.GetConnection2())
+            {
+                await con.OpenAsync();
+
+                using (MySqlCommand com = con.CreateCommand())
+                {
+                    com.CommandText = "DELETE FROM client WHERE id = @id";
+                    com.Parameters.AddWithValue("@id", customerId);
+
+                    await com.ExecuteNonQueryAsync();
+                }
+            }
+        }
 
         public async Task AddOrUpdateCustomerMySql(List<Customer> customers)
         {
