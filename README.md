@@ -24,7 +24,9 @@ This application serves as a platform to manage customer data stored in the MySQ
 - **FrontEnd:** The FrontEnd component is a dynamic ASP.NET Core MVC application designed to provide users with an intuitive interface for seamless interaction with customer data.
 
 ## Features
+
 - **MySQL Database Management:** View, add, update, delete and synchronize customer data stored in a MySQL database.
+
 - **Secondary MySQL Database:** Another MySQL database is integrated to enable synchronization functionalities. 
 This database, hosted independently, stores a copy of customer data for redundancy and backup purposes.
 
