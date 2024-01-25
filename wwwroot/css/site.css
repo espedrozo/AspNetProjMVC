@@ -24,7 +24,7 @@ body {
 
 .add-customer {
     max-width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: white;
 }
 
@@ -65,7 +65,8 @@ body {
 
 .btn-sync {
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    margin: 0px 20px 20px 0px;
 }
 
 #container-footer {
