@@ -111,6 +111,22 @@ namespace AspNetProjMVC.Controllers
                 }
             }
         }
+
+        public async Task DeleteCustomerMySql(int customerId)
+        {
+            using (MySqlConnection con = _databaseController.GetConnection())
+            {
+                await con.OpenAsync();
+
+                using (MySqlCommand com = con.CreateCommand())
+                {
+                    com.CommandText = "DELETE FROM customer WHERE id = @id";
+                    com.Parameters.AddWithValue("@id", customerId);
+
+                    await com.ExecuteNonQueryAsync();
+                }
+            }
+        }
     }
 }
 

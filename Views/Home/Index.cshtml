@@ -36,7 +36,6 @@
     </form>
 </div>
 
-
 <div class="table-container">
     <div class="table">
         <h3>MySQL Customer Database</h3>
@@ -50,6 +49,7 @@
                                 @head
                             </th>
                         }
+                        <th>Actions</th> <!-- Action Column -->
                     }
                 </tr>
             </thead>
@@ -67,6 +67,12 @@
                                 <td>@Customer.birth_date.ToString("dd/MM/yyyy")</td>
                                 <td>@Customer.status</td>
                                 <td>@Customer.updated_at.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    <form id="action-column" method="post" asp-action="DeleteCustomer">
+                                        <input type="hidden" name="customerId" value="@Customer.id" />
+                                        <button id="btn-action" type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         }
                     }
@@ -75,7 +81,6 @@
         </table>
     </div>
 </div>
-
 
 <div class="table-container">
     <div class="table">
@@ -90,6 +95,7 @@
                                 @head
                             </th>
                         }
+                        <th>Actions</th> <!-- Action Column -->
                     }
                 </tr>
             </thead>
@@ -106,6 +112,12 @@
                                 <td>@Customer.sex</td>
                                 <td>@Customer.birth_date.ToString("dd/MM/yyyy")</td>
                                 <td>@Customer.status</td>
+                                <td>
+                                    <form id="action-column" method="post" asp-action="DeleteClient">
+                                        <input type="hidden" name="customerId" value="@Customer.id" />
+                                        <button id="btn-action" type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         }
                     }
