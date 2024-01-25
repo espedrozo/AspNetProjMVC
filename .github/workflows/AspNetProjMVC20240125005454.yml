@@ -2,7 +2,7 @@ name: Compilar e implantar o aplicativo .NET Core no aplicativo Web AspNetProjMV
 on:
   push:
     branches:
-    - EspDev
+    - master
 env:
   AZURE_WEBAPP_NAME: AspNetProjMVC20240125005454
   AZURE_WEBAPP_PACKAGE_PATH: .\published
