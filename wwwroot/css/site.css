@@ -1,15 +1,15 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
@@ -53,15 +53,15 @@ body {
     margin-right: 20px;
 }
 
-.table h3 {
-    margin-bottom: 10px;
-    color: white;
-}
+    .table h3 {
+        margin-bottom: 10px;
+        color: white;
+    }
 
-.table table {
-    width: 100%;
-    background-color: lightgray;
-}
+    .table table {
+        width: 100%;
+        background-color: lightgray;
+    }
 
 .btn-sync {
     display: flex;

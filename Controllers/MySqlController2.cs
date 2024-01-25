@@ -117,7 +117,7 @@ namespace AspNetProjMVC.Controllers
             string database = "sql10675811";
             string username = "sql10675811";
             string password = "bBLs1iXr6v";
-            MySqlCommand com = new MySqlCommand();            
+            MySqlCommand com = new MySqlCommand();
 
             string connetionString = "Server=" + server + ";Database=" + database + ";Uid=" + username + ";Pwd=" + password + ";";
             using MySqlConnection con = new MySqlConnection(connetionString);
@@ -160,4 +160,3 @@ namespace AspNetProjMVC.Controllers
     }
 
 }
-
