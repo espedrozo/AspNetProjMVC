@@ -1,5 +1,8 @@
 # SyncData - Database Synchronization
 The project aims to showcase integration with two relational (MySQL) databases within a single application.
+
+![SyncData](https://github.com/user-attachments/assets/a6d47503-4c32-4dde-bb96-e7c11af410c7)
+
 - Access the live application [here](https://aspnetprojmvc20240125005454.azurewebsites.net/).
 
 ## Summary
